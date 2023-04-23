@@ -9,11 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.pathway.databinding.FragmentSecondBinding;
+import com.example.pathway.databinding.RegisterPageFragmentBinding;
 
 public class RegisterPageFragment extends Fragment {
 
-    private FragmentSecondBinding binding;
+    private RegisterPageFragmentBinding binding;
 
     @Override
     public View onCreateView(
@@ -21,7 +21,7 @@ public class RegisterPageFragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentSecondBinding.inflate(inflater, container, false);
+        binding = RegisterPageFragmentBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
