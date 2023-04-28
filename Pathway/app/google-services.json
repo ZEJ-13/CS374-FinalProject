@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "252651594669",
+    "firebase_url": "https://pathway-ce4e9-default-rtdb.firebaseio.com",
+    "project_id": "pathway-ce4e9",
+    "storage_bucket": "pathway-ce4e9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:252651594669:android:86c1e8ff0703e64876b724",
+        "android_client_info": {
+          "package_name": "com.example.pathway"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "252651594669-lv0lkpuuk0kunbgjtl9dhj0bhk6trdk5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOA_CM0mfXlhz7l3mVKWGAl7XtFgW3P9o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "252651594669-lv0lkpuuk0kunbgjtl9dhj0bhk6trdk5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
