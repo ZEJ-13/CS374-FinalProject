@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RegisterPageFragment extends Fragment {
@@ -95,11 +96,19 @@ public class RegisterPageFragment extends Fragment {
                             if (task.isSuccessful()) {
                                 FirebaseUser user = firebaseAuth.getCurrentUser();
 
-                                DatabaseReference databaseReference = firebaseDatabase.getReference().child("users").child(user.getUid());
+                                DatabaseReference databaseReferenceUsers = firebaseDatabase.getReference().child("users").child(user.getUid());
+                                DatabaseReference databaseReferenceUserData = firebaseDatabase.getReference().child("userData").child(user.getUid());
                                 HashMap<String, String> hashMap = new HashMap<>();
                                 hashMap.put("username", username);
                                 hashMap.put("dob", dob);
-                                databaseReference.setValue(hashMap);
+                                databaseReferenceUsers.setValue(hashMap);
+                                HashMap<String,Double> costList = new HashMap<String,Double>();
+                                costList.put(""+0,2.5);
+                                HashMap<String,Double> incomeList = new HashMap<String,Double>();
+                                incomeList.put(""+0,5.2);
+                                HashMap<String,Double> savingList = new HashMap<String,Double>();
+                                savingList.put(""+0,10.1);
+                                databaseReferenceUserData.setValue(new UserData("","",costList,incomeList,savingList));
 
                                 Toast.makeText(getContext(), "Account created successfully", Toast.LENGTH_LONG).show();
                             } else {
