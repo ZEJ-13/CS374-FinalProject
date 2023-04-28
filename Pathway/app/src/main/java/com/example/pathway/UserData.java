@@ -1,61 +1,57 @@
 package com.example.pathway;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class UserData {
-    private String ID;
-    private String fullName;
-    private String dateOfBirth;
-    private String longTermGoal;
-    private ArrayList<Double> listOfCost;
-    private ArrayList<Double> listOfIncome;
-    private ArrayList<Double> listOfSavings;
 
-    public UserData(String ID, String fullName,String dateOfBirth,String longTermGoal,
-                    ArrayList<Double> listOfCost,ArrayList<Double> listOfIncome,ArrayList<Double> listOfSavings ){
-        this.ID = ID;
+    private String fullName;
+    private String longTermGoal;
+    private HashMap<String,Double> listOfCost;
+    private HashMap<String,Double> listOfIncome;
+    private HashMap<String,Double> listOfSavings;
+
+    public UserData(String fullName,String longTermGoal,
+                    HashMap<String,Double> listOfCost,HashMap<String,Double> listOfIncome,HashMap<String,Double> listOfSavings){
         this.fullName = fullName;
-        this.dateOfBirth = dateOfBirth;
         this.longTermGoal = longTermGoal;
         this.listOfCost = listOfCost;
         this.listOfIncome = listOfIncome;
         this.listOfSavings = listOfSavings;
     }
-    public String getID(){
-        return ID;
-    }
+
     public String getFullName(){
         return fullName;
     }
     public String getLongTermGoal(){
         return  longTermGoal;
     }
-    public ArrayList<Double> getListOfCost(){
+    public HashMap<String,Double> getListOfCost(){
         return listOfCost;
     }
-    public ArrayList<Double> getListOfIncome(){
+    public HashMap<String,Double> getListOfIncome(){
         return listOfIncome;
     }
-    public ArrayList<Double> getListOfSavings(){
+    public HashMap<String,Double> getListOfSavings(){
         return listOfSavings;
     }
     public double totalCost(){
         double counter = 0;
         for(int i=0; i<listOfCost.size();i++){
-            counter+=listOfCost.get(i);
+            counter+=listOfCost.get(""+i);
         }
         return counter;
     }
     public double totalIncome(){
         double counter = 0;
         for(int i=0; i<listOfIncome.size();i++){
-            counter+=listOfIncome.get(i);
+            counter+=listOfIncome.get(""+i);
         }
         return counter;
     }
     public double totalSavings(){
         double counter = 0;
         for(int i=0; i<listOfSavings.size();i++){
-            counter+=listOfSavings.get(i);
+            counter+=listOfSavings.get(""+i);
         }
         return counter;
     }
