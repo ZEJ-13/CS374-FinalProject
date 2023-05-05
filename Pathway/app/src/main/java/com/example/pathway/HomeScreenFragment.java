@@ -1,82 +1,96 @@
 package com.example.pathway;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
+import com.example.pathway.databinding.HomeScreenFragmentBinding;
+import com.example.pathway.databinding.InputPageFragmentBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeScreenFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class HomeScreenFragment extends Fragment {
+    private HomeScreenFragmentBinding binding;
+    TextView welcomeText;
+    TextView goalText;
+    TextView firstListCost;
+    TextView secondListCost;
+    TextView thirdListCost;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    Button detailsPageButton;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    DatabaseReference myRef;
+    String userId;
+    FirebaseUser user;
+    UserData currentUser;
 
-    public HomeScreenFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeScreenFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static HomeScreenFragment newInstance(String param1, String param2) {
-        HomeScreenFragment fragment = new HomeScreenFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home_screen, container, false);
+        binding = HomeScreenFragmentBinding.inflate(inflater,container,false);
+        return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Button testButton=(Button) getView().findViewById(R.id.testButton);//
-        testButton.setOnClickListener(new View.OnClickListener() {
+        welcomeText = (TextView) getView().findViewById(R.id.welcomeText);
+        goalText = (TextView) getView().findViewById(R.id.goalText);
+        firstListCost = (TextView) getView().findViewById(R.id.firstListCosts);
+        secondListCost = (TextView) getView().findViewById(R.id.secondListCosts);
+        thirdListCost = (TextView) getView().findViewById(R.id.thirdListCosts);
+        detailsPageButton = (Button) getView().findViewById(R.id.detailsButton);
+
+        detailsPageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 NavHostFragment.findNavController(HomeScreenFragment.this)
                         .navigate(R.id.action_Home_to_input);
             }
         });
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("userData");
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        userId = user.getUid();
+
+
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                currentUser = (UserData) snapshot.child(userId).getValue(UserData.class);
+                display();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w("InputPageFragment", "Failed to read value.", error.toException());
+            }
+        });
     }
+
+
+    public void display(){
+        welcomeText.setText("Welcome, " + currentUser.getFullName());
+        goalText.setText("Goal: " + currentUser.getLongTermGoal());
+        firstListCost.setText("$" + currentUser.getTotalCost());
+        secondListCost.setText("$" + currentUser.getTotalIncome());
+        thirdListCost.setText("$" + currentUser.getTotalSavings());
+    }
+
 }

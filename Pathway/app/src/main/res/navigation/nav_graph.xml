@@ -36,7 +36,7 @@
         android:id="@+id/HomePageScreenFragment"
         android:name="com.example.pathway.HomeScreenFragment"
         android:label="Home Page"
-        tools:layout="@layout/fragment_home_screen">
+        tools:layout="@layout/home_screen_fragment">
         <action
             android:id="@+id/action_Home_to_input"
             app:destination="@id/InputPageFragment"/>
