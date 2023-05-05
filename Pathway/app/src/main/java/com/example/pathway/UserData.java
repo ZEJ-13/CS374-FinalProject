@@ -2,10 +2,15 @@ package com.example.pathway;
 import java.util.ArrayList;
 import java.util.HashMap;
 /**
-*   Userdata contains the user's long term goal, list of Cost, list of Income, List of savings
- *  Using hashmap to similate list as firebase doesn't support list
- *  Hashmap's key is a String that will be parsed as a integer later(as firebase doesn't support
- *  non-string keys), value is a CostSpecific object that holds String costName and double cost.
+*   Userdata contains the user's long term goal, list of Cost, list of Income, List of Saving
+ *  Using HashMap to simulate list as firebase doesn't support list.
+ *
+ *  HashMap key will be in the format:  num + "key" as firebase is unable to store integer as key
+ *  and it deserialize "0" as type integer.
+ *
+ *  HashMap value will be CostSpecific object with String costName and double cost
+ *
+ *  Implemented basic setter, getter, and get total methods.
 */
 
 public class UserData {
@@ -34,6 +39,9 @@ public class UserData {
 
     public String getFullName(){
         return fullName;
+    }
+    public void setLongTermGoal(String longTermGoal){
+        this.longTermGoal = longTermGoal;
     }
     public String getLongTermGoal(){
         return longTermGoal;
@@ -68,9 +76,7 @@ public class UserData {
         }
         return counter;
     }
-    public void setLongTermGoal(String longTermGoal){
-        this.longTermGoal = longTermGoal;
-    }
+
     public void setListOfCost(HashMap<String,CostSpecific> listOfCost){
         this.listOfCost = listOfCost;
     }
