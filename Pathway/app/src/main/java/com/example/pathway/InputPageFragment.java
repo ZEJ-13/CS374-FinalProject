@@ -31,23 +31,53 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
+/**
+ * Creates TableLayout programmatically to support dynamic changes
+ * ScrollView and TableLayout formatted in input_page_fragment.xml
+ *
+ * Upon data change(delete or add), clearView() is called. Removing all child from every table rows and
+ * recreate View using display()
+ *
+ * display()'s structure:
+ * create first row of the first list (List of Cost)
+ * create body of first list
+ * create input row
+ *
+ * create first row of the second list (List of Income)
+ * create body of second list
+ * create input row
+ *
+ * create first row of the third list (List of Saving)
+ * create body of third list
+ * create input row
+ *
+ * Row creation has numList in its constructor to differentiate among lists.
+ *
+ *
+ */
 public class InputPageFragment extends Fragment {
     private InputPageFragmentBinding binding;
     DatabaseReference myRef;
     FirebaseUser user;
+    TableLayout myTable;
+
+    TableRow firstList;
+    TableRow firstInput;
     EditText firstCostNameInput;
     EditText firstCostInput;
+
+    TableRow secondList;
+    TableRow secondInput;
     EditText secondCostNameInput;
     EditText secondCostInput;
+
+
+    TableRow thirdList;
+    TableRow thirdInput;
     EditText thirdCostNameInput;
     EditText thirdCostInput;
-    TableLayout myTable;
-    TableRow firstList;
-    TableRow secondList;
-    TableRow thirdList;
-    TableRow firstInput;
-    TableRow secondInput;
-    TableRow thirdInput;
+
+
     DisplayMetrics metrics ;
     String userID;
     float scale;
@@ -56,7 +86,6 @@ public class InputPageFragment extends Fragment {
     int leftPadding;
     int topPadding;
 
-    TextView testView;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = InputPageFragmentBinding.inflate(inflater,container,false);
@@ -74,7 +103,6 @@ public class InputPageFragment extends Fragment {
         myRef = database.getReference("userData");
         user = FirebaseAuth.getInstance().getCurrentUser();
         userID = user.getUid();
-        testView = getView().findViewById(R.id.testText);
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
