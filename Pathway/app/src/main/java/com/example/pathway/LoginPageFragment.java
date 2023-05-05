@@ -34,7 +34,7 @@ public class LoginPageFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(LoginPageFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+                        .navigate(R.id.action_Login_to_Register);
             }
         });
 
@@ -60,7 +60,7 @@ public class LoginPageFragment extends Fragment {
                                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                 Toast.makeText(getContext(), "Login successful", Toast.LENGTH_LONG).show();
                                 NavHostFragment.findNavController(LoginPageFragment.this)
-                                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+                                        .navigate(R.id.action_Login_to_Input);//currently login to details, need homepage
                             } else {
                                 Toast.makeText(getContext(), "Login failed", Toast.LENGTH_LONG).show();
                             }

@@ -3,26 +3,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/LoginPageFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/LoginPageFragment"
         android:name="com.example.pathway.LoginPageFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/login_page_fragment">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_Login_to_Register"
+            app:destination="@id/RegisterPageFragment" />
+        <action
+            android:id="@+id/action_Login_to_Input"
+             app:destination="@id/InputPageFragment"/>
     </fragment>
+
     <fragment
-        android:id="@+id/SecondFragment"
+        android:id="@+id/RegisterPageFragment"
         android:name="com.example.pathway.RegisterPageFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/register_page_fragment">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            app:destination="@id/LoginPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/HomePageScreenFragment"
+        android:name="com.example.pathway.HomeScreenFragment"
+        android:label="Home Page"
+        tools:layout="@layout/fragment_home_screen">
+        <action
+            android:id="@+id/action_Home_to_input"
+            app:destination="@id/InputPageFragment"/>
+
+    </fragment>
+    <fragment
+        android:id="@+id/InputPageFragment"
+        android:name="com.example.pathway.InputPageFragment"
+        android:label="Details Page"
+        tools:layout="@layout/input_page_fragment">
+
     </fragment>
 </navigation>
