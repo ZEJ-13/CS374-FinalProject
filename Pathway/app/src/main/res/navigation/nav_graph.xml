@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_Login_to_Input"
              app:destination="@id/InputPageFragment"/>
+        <action
+            android:id="@+id/action_Login_to_Home"
+            app:destination="@+id/HomePageScreenFragment"/>
     </fragment>
 
     <fragment

@@ -117,7 +117,7 @@ public class InputPageFragment extends Fragment {
         });
     }
     public void display(UserData currentUser){
-        firstList = new TableRow(getContext());
+        firstList = new TableRow(this.getContext());
 
         createFirstLineTableRow(firstList,1);
         createTableRowBody(currentUser.getListOfCost(),currentUser,1);
