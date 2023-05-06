@@ -2,9 +2,11 @@ package com.example.pathway;
 
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.text.InputType;
@@ -57,6 +59,8 @@ import java.util.HashMap;
  */
 public class InputPageFragment extends Fragment {
     private InputPageFragmentBinding binding;
+    private Context myContext;
+
     DatabaseReference myRef;
     FirebaseUser user;
     TableLayout myTable;
@@ -91,18 +95,24 @@ public class InputPageFragment extends Fragment {
         binding = InputPageFragmentBinding.inflate(inflater,container,false);
         return binding.getRoot();}
 
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState){
+
+
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        scale = InputPageFragment.this.getResources().getDisplayMetrics().density;
-        metrics = InputPageFragment.this.getResources().getDisplayMetrics();
-        dipConvert = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,0f,metrics);
-        leftPadding = (int)(10*scale+0.5f);
-        topPadding = (int)(20*scale+0.5f);
+        if(myContext==null){
+            myContext=getContext();
+        }
         myTable = (TableLayout) getView().findViewById(R.id.table_view);
         myRef = database.getReference("userData");
         user = FirebaseAuth.getInstance().getCurrentUser();
         userID = user.getUid();
+
+        scale = myContext.getResources().getDisplayMetrics().density;
+        metrics = myContext.getResources().getDisplayMetrics();
+        dipConvert = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0f, metrics);
+        leftPadding = (int) (10 * scale + 0.5f);
+        topPadding = (int) (20 * scale + 0.5f);
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -116,15 +126,18 @@ public class InputPageFragment extends Fragment {
             }
         });
     }
+
+
+
     public void display(UserData currentUser){
-        firstList = new TableRow(this.getContext());
+        firstList = new TableRow(myContext);
 
         createFirstLineTableRow(firstList,1);
         createTableRowBody(currentUser.getListOfCost(),currentUser,1);
-        firstInput = new TableRow(getContext());
+        firstInput = new TableRow(myContext);
         firstInput.setPadding(0,2,0,0);
 
-        firstCostNameInput = new EditText(getContext());
+        firstCostNameInput = new EditText(myContext);
         firstCostNameInput.setPadding(leftPadding,0,0,0);
         firstCostNameInput.setInputType(InputType.TYPE_CLASS_TEXT);
         firstCostNameInput.setHint("Enter name of cost...");
@@ -133,7 +146,7 @@ public class InputPageFragment extends Fragment {
         firstCostNameInput.setTextSize(textSize);
         firstInput.addView(firstCostNameInput);
 
-        firstCostInput = new EditText(getContext());
+        firstCostInput = new EditText(myContext);
         firstCostInput.setPadding(leftPadding,0,0,0);
         firstCostInput.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
         firstCostInput.setHint("Enter cost...");
@@ -143,7 +156,7 @@ public class InputPageFragment extends Fragment {
         firstInput.addView(firstCostInput);
 
 
-        ImageView firstButton = new ImageView(getContext());
+        ImageView firstButton = new ImageView(myContext);
         firstButton.setBackgroundResource(R.drawable.add_button);
         firstButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,14 +183,14 @@ public class InputPageFragment extends Fragment {
         firstInput.addView(firstButton);
         myTable.addView(firstInput);
 
-        secondList = new TableRow(getContext());
+        secondList = new TableRow(myContext);
         createFirstLineTableRow(secondList,2);
         createTableRowBody(currentUser.getListOfIncome(),currentUser,2);
 
-        secondInput = new TableRow(getContext());
+        secondInput = new TableRow(myContext);
         secondInput.setPadding(0,2,0,0);
 
-        secondCostNameInput = new EditText(getContext());
+        secondCostNameInput = new EditText(myContext);
         secondCostNameInput.setPadding(leftPadding,0,0,0);
         secondCostNameInput.setInputType(InputType.TYPE_CLASS_TEXT);
         secondCostNameInput.setHint("Enter name of cost...");
@@ -186,7 +199,7 @@ public class InputPageFragment extends Fragment {
         secondCostNameInput.setTextSize(textSize);
         secondInput.addView(secondCostNameInput);
 
-        secondCostInput = new EditText(getContext());
+        secondCostInput = new EditText(myContext);
         secondCostInput.setPadding(leftPadding,0,0,0);
         secondCostInput.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
         secondCostInput.setHint("Enter cost...");
@@ -196,7 +209,7 @@ public class InputPageFragment extends Fragment {
         secondInput.addView(secondCostInput);
 
 
-        ImageView secondButton = new ImageView(getContext());
+        ImageView secondButton = new ImageView(myContext);
         secondButton.setBackgroundResource(R.drawable.add_button);
         secondButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -223,14 +236,14 @@ public class InputPageFragment extends Fragment {
         secondInput.addView(secondButton);
         myTable.addView(secondInput);
 
-        thirdList = new TableRow(getContext());
+        thirdList = new TableRow(myContext);
         createFirstLineTableRow(thirdList,3);
         createTableRowBody(currentUser.getListOfSavings(),currentUser,3);
 
-        thirdInput = new TableRow(getContext());
+        thirdInput = new TableRow(myContext);
         thirdInput.setPadding(0,2,0,0);
 
-        thirdCostNameInput = new EditText(getContext());
+        thirdCostNameInput = new EditText(myContext);
         thirdCostNameInput.setPadding(leftPadding,0,0,0);
         thirdCostNameInput.setInputType(InputType.TYPE_CLASS_TEXT);
         thirdCostNameInput.setHint("Enter name of cost...");
@@ -239,7 +252,7 @@ public class InputPageFragment extends Fragment {
         thirdCostNameInput.setTextSize(textSize);
         thirdInput.addView(thirdCostNameInput);
 
-        thirdCostInput = new EditText(getContext());
+        thirdCostInput = new EditText(myContext);
         thirdCostInput.setPadding(leftPadding,0,0,0);
         thirdCostInput.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
         thirdCostInput.setHint("Enter cost...");
@@ -247,7 +260,7 @@ public class InputPageFragment extends Fragment {
         thirdCostInput.setBackgroundResource(R.drawable.back);
         thirdCostInput.setTextSize(textSize);
         thirdInput.addView(thirdCostInput);
-        ImageView thirdButton = new ImageView(getContext());
+        ImageView thirdButton = new ImageView(myContext);
         thirdButton.setBackgroundResource(R.drawable.add_button);
         thirdButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -291,7 +304,7 @@ public class InputPageFragment extends Fragment {
         }
         myRow.setPadding(0,topPadding,0,0);
 
-        TextView listName = new TextView(getContext());
+        TextView listName = new TextView(myContext);
         listName.setText(text);
         listName.setPadding(leftPadding,0,0,0);
         listName.setWidth(dipConvert);
@@ -299,7 +312,7 @@ public class InputPageFragment extends Fragment {
         listName.setTextSize(textSize);
         myRow.addView(listName);
 
-        TextView listCost = new TextView(getContext());
+        TextView listCost = new TextView(myContext);
         listCost.setText("");
         listCost.setWidth(dipConvert);
         listCost.setBackgroundResource(R.drawable.back);
@@ -319,13 +332,13 @@ public class InputPageFragment extends Fragment {
             totalCost = currentUser.getTotalSavings();
         }
         for(int i=0; i<currentList.size();i++){
-            TableRow newRow = new TableRow(getContext());
+            TableRow newRow = new TableRow(myContext);
             newRow.setPadding(0,2,0,0);
 
             double currentCost=currentList.get(i+"key").getCost();
             String currentCostName = currentList.get(i+"key").getCostName();
 
-            TextView costName = new TextView(getContext());
+            TextView costName = new TextView(myContext);
             costName.setText(currentCostName);
             costName.setPadding(leftPadding,0,0,0);
             costName.setWidth(dipConvert);
@@ -333,7 +346,7 @@ public class InputPageFragment extends Fragment {
             costName.setTextSize(textSize);
             newRow.addView(costName);
 
-            TextView cost = new TextView(getContext());
+            TextView cost = new TextView(myContext);
 
             cost.setText(currentList.get(i+"key").getCost()+" ("+String.format("%.1f",currentCost
                     /totalCost*100)+ "%)");
@@ -343,7 +356,7 @@ public class InputPageFragment extends Fragment {
             cost.setTextSize(textSize);
             newRow.addView(cost);
 
-            ImageView deleteButton = new ImageView(getContext());
+            ImageView deleteButton = new ImageView(myContext);
             deleteButton.setBackgroundResource(R.drawable.delete_button);
             deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -380,7 +393,7 @@ public class InputPageFragment extends Fragment {
     }
     public void clearView(){
         myTable.removeAllViews();
-        firstList.removeAllViews();
+        //firstList.removeAllViews();
         secondList.removeAllViews();
         thirdList.removeAllViews();
         firstInput.removeAllViews();
@@ -389,6 +402,5 @@ public class InputPageFragment extends Fragment {
     }
     public void onDestroyView() {
         super.onDestroyView();
-        binding = null;
     }
 }

@@ -19,7 +19,7 @@
              app:destination="@id/InputPageFragment"/>
         <action
             android:id="@+id/action_Login_to_Home"
-            app:destination="@+id/HomePageScreenFragment"/>
+            app:destination="@id/HomePageScreenFragment"/>
     </fragment>
 
     <fragment
