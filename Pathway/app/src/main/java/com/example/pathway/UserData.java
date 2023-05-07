@@ -1,14 +1,10 @@
 package com.example.pathway;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
 /**
-*   Userdata contains the user's long term goal, list of Cost, list of Income, List of Saving
- *  Using HashMap to simulate list as firebase doesn't support list.
- *
- *  HashMap key will be in the format:  num + "key" as firebase is unable to store integer as key
- *  and it deserialize "0" as type integer.
- *
- *  HashMap value will be CostSpecific object with String costName and double cost
+ *  Userdata contains the user's long term goal, list of Cost, list of Income, List of Saving
  *
  *  Implemented basic setter, getter, and get total methods.
 */
@@ -17,19 +13,19 @@ public class UserData {
 
     private String fullName;
     private String longTermGoal;
-    private HashMap<String,CostSpecific> listOfCost;
-    private HashMap<String,CostSpecific> listOfIncome;
-    private HashMap<String,CostSpecific> listOfSavings;
+    private ArrayList<CostSpecific> listOfCost;
+    private ArrayList<CostSpecific> listOfIncome;
+    private ArrayList<CostSpecific> listOfSavings;
 
     public UserData(){
         this.fullName = "";
         this.longTermGoal = "";
-        this.listOfCost = new HashMap<>();
-        this.listOfIncome = new HashMap<>();
-        this.listOfSavings = new HashMap<>();
+        this.listOfCost = new ArrayList<>();
+        this.listOfIncome = new ArrayList<>();
+        this.listOfSavings = new ArrayList<>();
     }
     public UserData(String fullName,String longTermGoal,
-                    HashMap<String,CostSpecific> listOfCost,HashMap<String,CostSpecific> listOfIncome,HashMap<String,CostSpecific> listOfSavings){
+                    ArrayList<CostSpecific> listOfCost,ArrayList<CostSpecific> listOfIncome,ArrayList<CostSpecific> listOfSavings){
         this.fullName = fullName;
         this.longTermGoal = longTermGoal;
         this.listOfCost = listOfCost;
@@ -46,44 +42,44 @@ public class UserData {
     public String getLongTermGoal(){
         return longTermGoal;
     }
-    public HashMap<String,CostSpecific> getListOfCost(){
+    public ArrayList<CostSpecific> getListOfCost(){
         return listOfCost;
     }
-    public HashMap<String,CostSpecific> getListOfIncome(){
+    public ArrayList<CostSpecific> getListOfIncome(){
         return listOfIncome;
     }
-    public HashMap<String,CostSpecific> getListOfSavings(){
+    public ArrayList<CostSpecific> getListOfSavings(){
         return listOfSavings;
     }
     public double getTotalCost(){
         double counter = 0;
         for(int i=0; i<listOfCost.size();i++){
-            counter+=listOfCost.get(i+"key").getCost();
+            counter+=listOfCost.get(i).getCost();
         }
         return counter;
     }
     public double getTotalIncome(){
         double counter = 0;
         for(int i=0; i<listOfIncome.size();i++){
-            counter+=listOfIncome.get(i+"key").getCost();
+            counter+=listOfIncome.get(i).getCost();
         }
         return counter;
     }
     public double getTotalSavings(){
         double counter = 0;
         for(int i=0; i<listOfSavings.size();i++){
-            counter+=listOfSavings.get(i+"key").getCost();
+            counter+=listOfSavings.get(i).getCost();
         }
         return counter;
     }
 
-    public void setListOfCost(HashMap<String,CostSpecific> listOfCost){
+    public void setListOfCost(ArrayList<CostSpecific> listOfCost){
         this.listOfCost = listOfCost;
     }
-    public void setListOfIncome(HashMap<String,CostSpecific> listOfIncome){
+    public void setListOfIncome(ArrayList<CostSpecific> listOfIncome){
         this.listOfIncome = listOfIncome;
     }
-    public void setListOfSavings(HashMap<String,CostSpecific> listOfSavings){
+    public void setListOfSavings(ArrayList<CostSpecific> listOfSavings){
         this.listOfSavings = listOfSavings;
     }
 }

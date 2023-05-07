@@ -31,7 +31,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
  * Creates TableLayout programmatically to support dynamic changes
@@ -170,7 +170,7 @@ public class InputPageFragment extends Fragment {
                 else{
                     try {
                         CostSpecific temp = new CostSpecific(costName,Double.parseDouble(cost));
-                        currentUser.getListOfCost().put(currentUser.getListOfCost().size()+"key",temp);
+                        currentUser.getListOfCost().add(temp);
                         myRef.child(userID).setValue(currentUser);
                         clearView();
                     }catch(Exception e){
@@ -223,7 +223,7 @@ public class InputPageFragment extends Fragment {
                 else{
                     try {
                         CostSpecific temp = new CostSpecific(costName,Double.parseDouble(cost));
-                        currentUser.getListOfIncome().put(currentUser.getListOfIncome().size()+"key",temp);
+                        currentUser.getListOfIncome().add(temp);
                         myRef.child(userID).setValue(currentUser);
                         clearView();
                     }catch(Exception e){
@@ -274,7 +274,7 @@ public class InputPageFragment extends Fragment {
                 else{
                     try {
                         CostSpecific temp = new CostSpecific(costName,Double.parseDouble(cost));
-                        currentUser.getListOfSavings().put(currentUser.getListOfSavings().size()+"key",temp);
+                        currentUser.getListOfSavings().add(temp);
                         myRef.child(userID).setValue(currentUser);
                         clearView();
                     }catch(Exception e){
@@ -320,7 +320,7 @@ public class InputPageFragment extends Fragment {
         myRow.addView(listCost);
         myTable.addView(myRow);
     }
-    public void createTableRowBody(HashMap<String,CostSpecific> currentList, UserData currentUser, int numList){
+    public void createTableRowBody(ArrayList<CostSpecific> currentList, UserData currentUser, int numList){
         double totalCost = 0;
         if(numList==1){
             totalCost = currentUser.getTotalCost();
@@ -335,8 +335,8 @@ public class InputPageFragment extends Fragment {
             TableRow newRow = new TableRow(myContext);
             newRow.setPadding(0,2,0,0);
 
-            double currentCost=currentList.get(i+"key").getCost();
-            String currentCostName = currentList.get(i+"key").getCostName();
+            double currentCost=currentList.get(i).getCost();
+            String currentCostName = currentList.get(i).getCostName();
 
             TextView costName = new TextView(myContext);
             costName.setText(currentCostName);
@@ -348,7 +348,7 @@ public class InputPageFragment extends Fragment {
 
             TextView cost = new TextView(myContext);
 
-            cost.setText(currentList.get(i+"key").getCost()+" ("+String.format("%.1f",currentCost
+            cost.setText(currentList.get(i).getCost()+" ("+String.format("%.1f",currentCost
                     /totalCost*100)+ "%)");
             cost.setPadding(leftPadding,0,0,0);
             cost.setWidth(dipConvert);
@@ -369,17 +369,17 @@ public class InputPageFragment extends Fragment {
             myTable.addView(newRow);
         }
     }
-    public void handleListRowDelete(String costName, double cost, HashMap<String, CostSpecific> currentList, UserData currentUser, int listNum){
-        HashMap<String, CostSpecific> result = new HashMap<>();
-        HashMap<String, CostSpecific> original = currentList;
+    public void handleListRowDelete(String costName, double cost, ArrayList<CostSpecific> currentList, UserData currentUser, int listNum){
+        ArrayList<CostSpecific> result = new ArrayList<>();
+        ArrayList<CostSpecific> original = currentList;
         int counter = 0;
         int deleteCounter= 1;
         for(int i=0; i<original.size();i++){
-            if(original.get(i+"key").equals(costName, cost) && deleteCounter == 1 ){
+            if(original.get(i).equals(costName, cost) && deleteCounter == 1 ){
                 deleteCounter--;
             }
             else {
-                result.put(counter+"key",original.get(i+"key"));
+                result.add(original.get(i));
                 counter++;
             }
         }
