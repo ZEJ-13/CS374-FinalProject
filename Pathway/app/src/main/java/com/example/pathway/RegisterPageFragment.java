@@ -102,12 +102,9 @@ public class RegisterPageFragment extends Fragment {
                                 hashMap.put("username", username);
                                 hashMap.put("dob", dob);
                                 databaseReferenceUsers.setValue(hashMap);
-                                HashMap<String,CostSpecific> costList = new HashMap<String,CostSpecific>();
-                                costList.put(0+"key",new CostSpecific("default",2.5));
-                                HashMap<String,CostSpecific> incomeList = new HashMap<String,CostSpecific>();
-                                incomeList.put(0+"key",new CostSpecific("default", 5.2));
-                                HashMap<String,CostSpecific> savingList = new HashMap<String,CostSpecific>();
-                                savingList.put(0+"key",new CostSpecific("default",3.8));
+                                ArrayList<CostSpecific> costList = new ArrayList<>();
+                                ArrayList<CostSpecific> incomeList = new ArrayList<>();
+                                ArrayList<CostSpecific> savingList = new ArrayList<>();
                                 databaseReferenceUserData.setValue(new UserData("","",costList,incomeList,savingList));
 
                                 Toast.makeText(getContext(), "Account created successfully", Toast.LENGTH_LONG).show();
