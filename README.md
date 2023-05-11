@@ -1,6 +1,10 @@
 # CS374 Final Project - Pathway
 
-[Original Idea Proposal](https://docs.google.com/document/d/12T0b-e87_eChFAIsiES9U5QxapTsxlRZ/edit)
+
+
+<p align="center" width="100%">
+    <img width="33%" src="https://cdn.discordapp.com/attachments/1093199410076336289/1106311205301272586/image.png">
+</p>
 
 ## Proposal
 
@@ -41,3 +45,5 @@ Pathway utilizes Google Firebase in order to authenticate users and store user i
 ![Overview](/PrototypeImages/overview.png?raw=true)
 ![SignUp](/PrototypeImages/signup.png?raw=true)
 ![Login](/PrototypeImages/login.png?raw=true)
+
+[Original Idea Proposal](https://docs.google.com/document/d/12T0b-e87_eChFAIsiES9U5QxapTsxlRZ/edit)
