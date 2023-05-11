@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/LoginPageFragment" />
+        <action
+            android:id="@+id/action_Register_to_Login"
+            app:destination="@id/LoginPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/HomePageScreenFragment"
