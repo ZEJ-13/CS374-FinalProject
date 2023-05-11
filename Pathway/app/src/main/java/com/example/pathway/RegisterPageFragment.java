@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.example.pathway.databinding.RegisterPageFragmentBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -106,10 +108,12 @@ public class RegisterPageFragment extends Fragment {
                                 ArrayList<CostSpecific> incomeList = new ArrayList<>();
                                 ArrayList<CostSpecific> savingList = new ArrayList<>();
                                 databaseReferenceUserData.setValue(new UserData("","",costList,incomeList,savingList));
-
-                                Toast.makeText(getContext(), "Account created successfully", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getContext(), "Account created successfully", Toast.LENGTH_SHORT).show();
+                                // Navigate to the login page
+                                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_content_main);
+                                navController.navigate(R.id.action_Register_to_Login);
                             } else {
-                                Toast.makeText(getContext(), "Account creation failed", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getContext(), "Failed to create account", Toast.LENGTH_SHORT).show();
                             }
                         });
             }
