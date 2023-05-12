@@ -15,7 +15,7 @@
             android:id="@+id/titleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pathway"
+            android:text="Your Pathway"
             android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,109 +29,84 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Welcome, $name"
+            android:text="Welcome, $name!"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleText" />
 
         <TextView
-            android:id="@+id/goalText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="Goal: $goal"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
-
-        <TextView
             android:id="@+id/firstListText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
             android:layout_marginTop="28dp"
-            android:text="Cost"
+            android:text="Costs:    "
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.127"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/goalText" />
+            app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
 
         <TextView
             android:id="@+id/secondListText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
             android:layout_marginTop="28dp"
-            android:text="Income"
+            android:text="Income: "
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.138"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/firstListCosts" />
+            app:layout_constraintTop_toBottomOf="@+id/firstListText" />
 
         <TextView
             android:id="@+id/thirdListText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:text="Saving"
+            android:layout_marginLeft="28dp"
+            android:layout_marginTop="28dp"
+            android:text="Savings: "
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.135"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/secondListCosts" />
+            app:layout_constraintTop_toBottomOf="@+id/secondListText" />
 
         <TextView
             android:id="@+id/thirdListCosts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="136dp"
+            android:layout_marginRight="28dp"
             android:text="Saving details"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.175"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/thirdListText" />
+            app:layout_constraintTop_toTopOf="@+id/thirdListText" />
 
         <TextView
             android:id="@+id/firstListCosts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_marginRight="28dp"
             android:text="Cost details"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.161"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/firstListText" />
+            app:layout_constraintTop_toTopOf="@+id/firstListText" />
 
         <TextView
             android:id="@+id/secondListCosts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_marginRight="28dp"
             android:text="Income details"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.181"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/secondListText" />
+            app:layout_constraintTop_toTopOf="@+id/secondListText" />
 
         <Button
             android:id="@+id/detailsButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="View Details"
+            android:fontFamily="sans-serif-light"
+            android:text="View/Edit Expenses and Savings"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.145"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/thirdListCosts"
-            app:layout_constraintVertical_bias="0.432"
-            />
+            tools:layout_editor_absoluteX="16dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
 

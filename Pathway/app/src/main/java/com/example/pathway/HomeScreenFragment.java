@@ -50,7 +50,7 @@ public class HomeScreenFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         welcomeText = (TextView) getView().findViewById(R.id.welcomeText);
-        goalText = (TextView) getView().findViewById(R.id.goalText);
+        //goalText = (TextView) getView().findViewById(R.id.goalText);
         firstListCost = (TextView) getView().findViewById(R.id.firstListCosts);
         secondListCost = (TextView) getView().findViewById(R.id.secondListCosts);
         thirdListCost = (TextView) getView().findViewById(R.id.thirdListCosts);
@@ -86,8 +86,8 @@ public class HomeScreenFragment extends Fragment {
 
 
     public void display(){
-        welcomeText.setText("Welcome, " + currentUser.getFullName());
-        goalText.setText("Goal: " + currentUser.getLongTermGoal());
+        welcomeText.setText("Welcome, " + currentUser.getFullName() +"!");
+        //goalText.setText("Goal: " + currentUser.getLongTermGoal());
         firstListCost.setText("$" + currentUser.getTotalCost());
         secondListCost.setText("$" + currentUser.getTotalIncome());
         thirdListCost.setText("$" + currentUser.getTotalSavings());
