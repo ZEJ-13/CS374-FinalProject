@@ -135,7 +135,7 @@ public class InputPageFragment extends Fragment {
         createFirstLineTableRow(firstList,1);
         createTableRowBody(currentUser.getListOfCost(),currentUser,1);
         firstInput = new TableRow(myContext);
-        firstInput.setPadding(0,2,0,0);
+        //firstInput.setPadding(0,2,0,0);
 
         firstCostNameInput = new EditText(myContext);
         firstCostNameInput.setPadding(leftPadding,0,0,0);
@@ -188,7 +188,7 @@ public class InputPageFragment extends Fragment {
         createTableRowBody(currentUser.getListOfIncome(),currentUser,2);
 
         secondInput = new TableRow(myContext);
-        secondInput.setPadding(0,2,0,0);
+        //secondInput.setPadding(0,2,0,0);
 
         secondCostNameInput = new EditText(myContext);
         secondCostNameInput.setPadding(leftPadding,0,0,0);
@@ -241,7 +241,7 @@ public class InputPageFragment extends Fragment {
         createTableRowBody(currentUser.getListOfSavings(),currentUser,3);
 
         thirdInput = new TableRow(myContext);
-        thirdInput.setPadding(0,2,0,0);
+        //thirdInput.setPadding(0,2,0,0);
 
         thirdCostNameInput = new EditText(myContext);
         thirdCostNameInput.setPadding(leftPadding,0,0,0);
@@ -333,7 +333,7 @@ public class InputPageFragment extends Fragment {
         }
         for(int i=0; i<currentList.size();i++){
             TableRow newRow = new TableRow(myContext);
-            newRow.setPadding(0,2,0,0);
+            //newRow.setPadding(0,2,0,0);
 
             double currentCost=currentList.get(i).getCost();
             String currentCostName = currentList.get(i).getCostName();
