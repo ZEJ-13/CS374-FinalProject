@@ -107,7 +107,7 @@ public class RegisterPageFragment extends Fragment {
                                 ArrayList<CostSpecific> costList = new ArrayList<>();
                                 ArrayList<CostSpecific> incomeList = new ArrayList<>();
                                 ArrayList<CostSpecific> savingList = new ArrayList<>();
-                                databaseReferenceUserData.setValue(new UserData("","",costList,incomeList,savingList));
+                                databaseReferenceUserData.setValue(new UserData(username,"",costList,incomeList,savingList));
                                 Toast.makeText(getContext(), "Account created successfully", Toast.LENGTH_SHORT).show();
                                 // Navigate to the login page
                                 NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_content_main);
