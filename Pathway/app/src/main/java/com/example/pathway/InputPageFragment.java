@@ -348,7 +348,7 @@ public class InputPageFragment extends Fragment {
 
             TextView cost = new TextView(myContext);
 
-            cost.setText(currentList.get(i).getCost()+" ("+String.format("%.1f",currentCost
+            cost.setText("$"+currentList.get(i).getCost()+" ("+String.format("%.1f",currentCost
                     /totalCost*100)+ "%)");
             cost.setPadding(leftPadding,0,0,0);
             cost.setWidth(dipConvert);
