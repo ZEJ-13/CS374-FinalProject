@@ -1,9 +1,7 @@
 # CS374 Final Project - Pathway
 
-
-
 <p align="center" width="100%">
-    <img width="33%" src="https://cdn.discordapp.com/attachments/1093199410076336289/1106311205301272586/image.png">
+    <img width="50%" src="https://cdn.discordapp.com/attachments/381066127129706501/1106352858577776650/image.png">
 </p>
 
 ## Proposal
@@ -34,17 +32,25 @@ Here are some examples of users who may use our app:
 
  ## Existing Solutions
 
+Wally is a financial status tracker that allows the user to connect various accounts and see graphical breakdowns of their financial situation. Wally also allows the user to make custom budgets and goals. Unlike Wally, our app design is more streamlined and only uses information granted to it by the user (no connection to external accounts)
 
+Mint is another financial status tracker, similar to Wally. It offers more advanced features, like credit score. Our app is more simplistic and does not display potentially sensitive information the user does not want to share.
 
  ## Utilizations
 
 Pathway utilizes Google Firebase in order to authenticate users and store user information.
 
-## Design
+## Prototype Designs
 
-![Overview](/PrototypeImages/overview.png?raw=true)
-![SignUp](/PrototypeImages/signup.png?raw=true)
-![Login](/PrototypeImages/login.png?raw=true)
+<p align="center" width="100%">
+    <img width="50%" src="https://cdn.discordapp.com/attachments/381066127129706501/1106731652283105330/signup.png">
+</p>
+<p align="center" width="100%">
+    <img width="50%" src="https://cdn.discordapp.com/attachments/381066127129706501/1106731652564144178/login.png">
+</p>
+<p align="center" width="100%">
+    <img width="50%" src="https://cdn.discordapp.com/attachments/381066127129706501/1106731652903862313/overview.png">
+</p>
 
 [Original Idea Proposal](https://docs.google.com/document/d/12T0b-e87_eChFAIsiES9U5QxapTsxlRZ/edit)
 [References](https://docs.google.com/document/d/14BfdnDzW1ABBRNvdkXnHc9BkfhJ9yFtT4Y4l0aftAwU/edit?usp=sharing)
