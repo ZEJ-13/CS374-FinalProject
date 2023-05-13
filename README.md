@@ -53,3 +53,4 @@ Pathway utilizes Google Firebase in order to authenticate users and store user i
 </p>
 
 [Original Idea Proposal](https://docs.google.com/document/d/12T0b-e87_eChFAIsiES9U5QxapTsxlRZ/edit)
+[References](https://docs.google.com/document/d/14BfdnDzW1ABBRNvdkXnHc9BkfhJ9yFtT4Y4l0aftAwU/edit?usp=sharing)
