@@ -4,6 +4,8 @@
     <img width="50%" src="https://cdn.discordapp.com/attachments/381066127129706501/1106352858577776650/image.png">
 </p>
 
+[Video on Youtube](https://youtu.be/2E92sTXrluU)
+
 ## Proposal
 
 Pathway is a financial assistant app for college students who wish to improve their financial literacy and make informed decisions about their money. Pathway allows users to track their income and manage their expenses to achieve their financial goals. With a streamlined design, our app is solely dedicated to empowering our users to make smart decisions about their money, using only the information authorized to us by the user.
